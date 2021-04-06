@@ -19,7 +19,7 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
     # makes sure every note is assigned a user_id at creation
-    @note.user_id = current_user
+    @note.user = current_user
 
     if @note.save
       render json: @note, status: :created, location: @note
